@@ -130,8 +130,7 @@ history = model.fit(
 val_probs = model.predict(X_val_scaled).ravel()
 # Clip to avoid log(0) / fully-saturated outputs before AUC calculation
 val_probs_clipped = np.clip(val_probs, 1e-7, 1 - 1e-7)
-roc_auc = roc_auc_score(y_val, val_probs_clipped)
-
+roc_auc = roc_auc_score(y_val, val_probs)
 print(f"\n--- VALIDATION RESULTS ---")
 print(f"ROC-AUC: {roc_auc:.5f}")
 
